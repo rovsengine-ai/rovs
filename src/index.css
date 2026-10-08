@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ROVS Productions - Cinematic Design System
+   Color palette: Black, White, Silver with soft glows
+   All colors in HSL format
+*/
+
+@layer base {
+  :root {
+    /* Core palette - Dark cinematic theme */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Silver accent as primary */
+    --primary: 0 0% 75%;
+    --primary-foreground: 0 0% 4%;
+
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 75%;
+
+    --radius: 0.75rem;
+
+    /* Custom design tokens */
+    --silver: 0 0% 75%;
+    --silver-light: 0 0% 85%;
+    --silver-dark: 0 0% 55%;
+    --glow-white: 0 0% 100%;
+    --deep-black: 0 0% 2%;
+
+    /* Sidebar tokens */
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 75%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 75%;
+  }
+
+  .dark {
+    --background: 0 0% 4%;
+    --foreground: 0 0% 95%;
+    --card: 0 0% 7%;
+    --card-foreground: 0 0% 95%;
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 75%;
+    --primary-foreground: 0 0% 4%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 60%;
+    --accent: 0 0% 20%;
+    --accent-foreground: 0 0% 95%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 0 0% 75%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 0 0% 75%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 75%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+}
+
+@layer utilities {
+  /* Cinematic glow effects */
+  .glow-soft {
+    text-shadow: 0 0 20px hsl(var(--glow-white) / 0.3),
+                 0 0 40px hsl(var(--glow-white) / 0.1);
+  }
+
+  .glow-strong {
+    text-shadow: 0 0 30px hsl(var(--glow-white) / 0.5),
+                 0 0 60px hsl(var(--glow-white) / 0.2);
+  }
+
+  .glow-silver {
+    text-shadow: 0 0 20px hsl(var(--silver) / 0.4),
+                 0 0 40px hsl(var(--silver) / 0.2);
+  }
+
+  .box-glow {
+    box-shadow: 0 0 30px hsl(var(--glow-white) / 0.1),
+                0 0 60px hsl(var(--glow-white) / 0.05);
+  }
+
+  .box-glow-silver {
+    box-shadow: 0 0 20px hsl(var(--silver) / 0.2),
+                0 0 40px hsl(var(--silver) / 0.1);
+  }
+
+  /* Gradient overlays */
+  .gradient-fade-up {
+    background: linear-gradient(to top, hsl(var(--background)) 0%, transparent 100%);
+  }
+
+  .gradient-fade-down {
+    background: linear-gradient(to bottom, hsl(var(--background)) 0%, transparent 100%);
+  }
+
+  .gradient-radial-dark {
+    background: radial-gradient(ellipse at center, hsl(var(--background) / 0.8) 0%, hsl(var(--deep-black)) 100%);
+  }
+
+  /* Silver gradient text */
+  .text-gradient-silver {
+    background: linear-gradient(180deg, hsl(var(--silver-light)) 0%, hsl(var(--silver)) 50%, hsl(var(--silver-dark)) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--silver-dark));
+}
